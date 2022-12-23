@@ -18,7 +18,7 @@ def get_quote():
     children = children_spinbox.get()
     region = region_combobox.get()
     
-    # Proces inputs and make into a list
+    # Process inputs and make into a list
     new_user = []
     new_user.append(int(age))
     if sex == 'Female':
@@ -41,6 +41,7 @@ def get_quote():
         new_user.append(4)
     
     # Read and process raw data
+    # Turns string data into numbers and then a categorical variable
     data = pd.read_csv('insurance.csv')
     X = data.copy()
     X['sex'] = [1 if 'female' in i else 0 for i in X['sex']]
@@ -92,7 +93,7 @@ window.title('Insurance Premium Calculator')
 frame = tkinter.Frame(window)
 frame.pack()
 
-# instructions
+# Instruction frame for app
 intro_frame = tkinter.LabelFrame(frame, text = 'Welcome!')
 intro_frame.grid(row=0,column=0, padx=20,pady=20)
 instruction_label = tkinter.Label(intro_frame, text='Please input all information to get a quote.')
